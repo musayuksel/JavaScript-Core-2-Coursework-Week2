@@ -1,5 +1,22 @@
 function todoList(todos) {
-  // Write your code here...
+  const content = document.querySelector('content');
+  const ul = document.createElement('ul');
+  document.body.appendChild(ul);
+  todos.forEach(element =>{
+    const li = document.createElement('li');
+    li.innerText = element.todo;
+    ul.appendChild(li);
+    li.style.textDecoration ='none';
+    //line-through
+    li.addEventListener('click', ()=>{
+      if(li.style.textDecoration === 'none'){
+        li.style.textDecoration = 'line-through';
+      } else {
+        li.style.textDecoration = 'none';
+      } 
+    });
+
+  });
 }
 
 const todos = [
