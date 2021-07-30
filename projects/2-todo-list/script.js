@@ -6,14 +6,14 @@ function populateTodoList(todos) {
      const i1  =document.createElement('i');
      const i2 = document.createElement('i');
      const span = document.createElement('span');
-    li.className =('list-group-item d-flex justify-content-between align-items-center');
+    li.className =('list-group-item d-flex justify-content-between align-items-center');//it will delete olds
+    span.classList.add('badge', 'bg-primary', 'rounded-pill');
+    i1.classList.add('fa', 'fa-check');
+    i2.classList.add('fa', 'fa-trash');
     li.innerText=element.task;
     if(element.completed){
       li.style.textDecoration='line-through';
     }
-    span.classList.add('badge', 'bg-primary', 'rounded-pill');
-    i1.classList.add('fa', 'fa-check');
-    i2.classList.add('fa', 'fa-trash');
     span.appendChild(i1);
     span.appendChild(i2);
     li.appendChild(span);
@@ -56,6 +56,11 @@ function addNewTodo(event) {
 }
 
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
-function deleteAllCompletedTodos() {
-  // Write your code here...
+function deleteAllCompletedTodos(event) {
+  todos = todos.filter(element =>{
+    return !element.completed;
+  })
+  event.preventDefault();
+  populateTodoList(todos);
+// Write your code here...
 }
